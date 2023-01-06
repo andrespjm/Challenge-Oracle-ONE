@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;;
+}
+
+body{
+    background-color: #E9ECF8;
+}
+
+#wrapper{
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    padding: 2rem;
+    width: 100%;
+}
+
+.container-input{
+    display: block;
+    height: 100%;
+    width: 75%;
+    padding: 2rem;
+}
+
+.container-input .text-input{
+    color: #0A3871;
+    height: 65%;
+    font-size: 2rem;
+    font-family: 'Inter', sans-serif;
+    width: 80%; 
+    margin: 5% 0 0 10%; 
+    padding: 0; 
+    border-width: 0;
+    outline: none;
+    resize: none;
+    background: none;
+}
+
+.container-input .text-input::placeholder{
+    color:#0A3871;
+}
+
+.container-input .logo{
+    height: auto;
+}
+
+/* Seccion de botones*/
+
+.container-bottom{
+    height: 15%;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.container-bottom .buttons{
+    display: flex;
+    /* justify-content: center; */
+    gap: 16px;
+}
+
+.container-bottom .info{
+    color: #495057;
+    font-size: 12px;
+    margin-bottom: 20px;
+    opacity: 80%;
+}
+
+.container-bottom .buttons button{
+    height: 67px;
+    padding: 24px;
+    font-size: 16px;
+    width: 328px;
+    border-radius: 24px;
+    border: none;
+}
+
+.container-bottom .buttons .encri{
+    background-color: #0A3871;
+    color: #fff;
+}
+
+.container-bottom .buttons .decri{
+    background-color: #D8DFE8;
+    border: 1px solid #0A3871;
+    color: #0A3871;
+}
+
+.container-text{
+    background-color: #fff;
+    height: 100%;
+    width: 25%;
+    border-radius: 15px;
+    box-shadow: 0px 24px 32px -8px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+.container-message{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+}
+
+.container-message img{
+    width: 100%;
+}
+
+.container-message .error{
+    color: #343A40;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.container-message .message{
+    color: #495057;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+/*680px*/
+@media(max-width: 768px){
+    #wrapper{
+        flex-direction: column;
+    }
+    .container-input{
+        width: 100%;
+    }
+
+    .container-message img{
+        display: none;
+    }
+
+
+    .container-text{
+        width: 100%;
+    }
+
+    .container-bottom{
+        width: 100%;
+    }
+
+    .container-bottom .buttons button{
+        width: 332px;
+    }
+
+}
+
+@media(max-width: 375px){
+    .container-bottom{
+        width: 100%;
+    }
+    .container-bottom .buttons{
+        flex-direction: column;
+        gap: 8;
+    }
+
+    .container-bottom .buttons button{
+        width: 100%;
+    }
+
+    .container-input .text-input{
+        height: 50%;
+    }
+
+    .container-input{
+        padding: .5rem;
+    }
+
+    .container-input .logo{
+        text-align: center;
+    }
+
+    .container-input .text-input{
+        font-size: 1.4rem;
+    }
+
+    .container-text{
+        margin-top: 2rem;
+    }
+}

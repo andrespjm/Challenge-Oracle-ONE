@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecripter</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container-input">
+            <div class="logo">
+                <img src="./images/Logo.png" alt="Logo">
+            </div>
+            <textarea cols="2" rows="10" class="text-input" placeholder="Ingrese el text aquí"></textarea>
+
+            <div class="container-bottom">
+                <p class="info"><i class="fa-solid fa-circle-exclamation"></i> Solo letras minúsculas y sin acento</p>
+                <div class="buttons">
+                    <button class="encri">Encriptar</button>
+                    <button class="decri">Desencriptar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-text">
+            <div class="container-message">
+                <img src="./images/munieco.png" alt="">
+                <p class="error">Ningún mensaje fue encontrado</p>
+                <p class="message">Ingrese el texto que desea encriptar o desencriptar</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/Encript.js"></script>
+
+</html>
