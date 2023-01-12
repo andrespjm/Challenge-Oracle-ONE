@@ -1,19 +1,16 @@
-export class Encript {
-  private strDecript: string;
-  private ouputEncript: string | null;
+export class Crypt {
+  private static strDecrypt: string;
+  private static strEncrypt: string;
 
-  constructor(strDecript: string) {
-    this.strDecript = strDecript;
-    this.ouputEncript = null;
-  }
-
-  public encript(): string {
+  public static encrypt(strDecrypt: string): string | null {
     // La letra "e" es convertida para "enter"
     // La letra "i" es convertida para "imes"
     // La letra "a" es convertida para "ai"
     // La letra "o" es convertida para "ober"
     // La letra "u" es convertida para "ufat"
-    const vowelsEncripts = {
+    if (/[A-Z]/g.test(strDecrypt)) return null;
+    this.strDecrypt = strDecrypt;
+    const vowelsEncrypts = {
       a: "ai",
       e: "enter",
       i: "imes",
@@ -21,11 +18,28 @@ export class Encript {
       u: "ufat",
     };
     let newWords = "";
-    const arr = this.strDecript.toLowerCase().split("");
+    const arr = this.strDecrypt.toLowerCase().split("");
     for (const item of arr) {
       //@ts-ignore
-      newWords += vowelsEncripts[item] || item;
+      newWords += vowelsEncrypts[item] || item;
     }
     return newWords;
+  }
+
+  public static decrypt(strEncrypt: string): string | null {
+    if (/[A-Z]/g.test(strEncrypt)) return null;
+    this.strEncrypt = strEncrypt;
+    const replaceWithChar = ["a", "e", "i", "o", "u"];
+
+    const charToReplace = ["ai", "enter", "imes", "ober", "ufat"];
+
+    for (let i = 0; i < charToReplace.length; i++) {
+      strEncrypt = strEncrypt.replace(
+        new RegExp(charToReplace[i], "g"),
+        replaceWithChar[i]
+      );
+    }
+
+    return strEncrypt;
   }
 }
