@@ -105,6 +105,11 @@ body{
     position: relative;
 }
 
+.container-text .show-text{
+    height: 100%;
+    width: 100%;
+}
+
 .container-text .show-encripted{
     color: #495057;
     height: 100%;
@@ -113,15 +118,16 @@ body{
     line-height: 36px;
 }
 
-.container-text .show-encripted .btn-copy{
+.container-text .btn-copy{
     color: #0A3871;
     position: absolute;
     right: .5rem;
     bottom: .5rem;
     text-decoration: none;
+    display: none;
 }
 
-.container-text .show-encripted .btn-copy:hover{
+.container-text .btn-copy:hover{
     color: #495057;
 }
 

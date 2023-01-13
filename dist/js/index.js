@@ -1,38 +1,78 @@
+var __awaiter =
+  (this && this.__awaiter) ||
+  function (thisArg, _arguments, P, generator) {
+    function adopt(value) {
+      return value instanceof P
+        ? value
+        : new P(function (resolve) {
+            resolve(value);
+          });
+    }
+    return new (P || (P = Promise))(function (resolve, reject) {
+      function fulfilled(value) {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function rejected(value) {
+        try {
+          step(generator["throw"](value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function step(result) {
+        result.done
+          ? resolve(result.value)
+          : adopt(result.value).then(fulfilled, rejected);
+      }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+  };
 import { Crypt } from "./Encript.js";
+import {
+  emptyFieldTemplate,
+  errorTextTemplate,
+  outputTextTemplate,
+  preloader,
+} from "./Templates.js";
 const text = document.querySelector("#text-input");
 const btnEncript = document.querySelector("#encri");
 const btnDecript = document.querySelector("#decri");
+const btnCopy = document.querySelector("#btn-copy");
 const containerText = document.querySelector("#container-text");
-const showErrorMessage = document.querySelector("#show-error");
+const showText = document.querySelector("#show-text");
 const containerMessage = document.querySelector("#container-message");
-btnEncript.addEventListener("click", (e) => {
-  e.preventDefault();
-  showTextEcripted(Crypt.encrypt(text.value));
-});
-btnDecript.addEventListener("click", (e) => {
-  e.preventDefault();
-  showTextEcripted(Crypt.decrypt(text.value));
-});
-function showTextEcripted(textEncripted) {
-  if (!textEncripted) {
-    textEncripted = `
-    <div id="show-error" class="show-error">
-                <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_jvki4wd1.json"
-                    background="transparent" speed="1" style="width: 200px; height: 200px;" loop
-                    autoplay></lottie-player>
-                <p>Solo letras minúsculas y sin acento.</p>
-            </div>
-    `;
-  } else {
-    textEncripted = `
-      <div class="show-encripted">
-        <a href="#" id="btn-copy" class="btn-copy" title="Copiar"><i class="fa-sharp fa-solid fa-clone"></i></a>
-        ${textEncripted}
-      </div>
-    `;
-  }
-  containerText.innerHTML = `<i class="fa-sharp fa-solid fa-circle-notch fa-spin"></i>`;
+document.addEventListener("DOMContentLoaded", main);
+function main() {
+  showText.innerHTML = emptyFieldTemplate();
+  btnEncript.addEventListener("click", (e) => {
+    e.preventDefault();
+    showTextEcryptedAndDecryted(Crypt.encrypt(text.value));
+  });
+  btnDecript.addEventListener("click", (e) => {
+    e.preventDefault();
+    showTextEcryptedAndDecryted(Crypt.decrypt(text.value));
+  });
+  btnCopy.addEventListener("click", () =>
+    __awaiter(this, void 0, void 0, function* () {
+      btnCopy.innerHTML = yield Crypt.copy();
+    })
+  );
+}
+function showTextEcryptedAndDecryted(textEncripted) {
+  const text = !textEncripted
+    ? errorTextTemplate()
+    : outputTextTemplate(textEncripted);
+  showText.innerHTML = preloader();
+  btnCopy.style.display = "none";
+  btnCopy.innerHTML = `<i class="fa-sharp fa-solid fa-clone"></i>`;
   setTimeout(() => {
-    containerText.innerHTML = textEncripted;
+    showText.innerHTML = text;
+    if (textEncripted) {
+      btnCopy.style.display = "block";
+    }
   }, 1000);
 }
