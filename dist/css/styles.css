@@ -23,6 +23,7 @@ body{
     height: 100%;
     width: 75%;
     padding: 2rem;
+    position: relative;
 }
 
 .container-input .text-input{
@@ -37,6 +38,18 @@ body{
     outline: none;
     resize: none;
     background: none;
+}
+
+.container-input .btn-clean{
+    color: #0A3871;
+    position: absolute;
+    right: 3rem;
+    top: 6rem;
+    display: none;
+}
+
+.container-input .btn-clean:hover{
+    color: #495057;
 }
 
 .container-input .text-input::placeholder{

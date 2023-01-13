@@ -40,12 +40,12 @@ export class Crypt extends ClipboardFn {
         replaceWithChar[i]
       );
     }
-
+    this.textDecrypt = strEncrypt;
     return strEncrypt;
   }
 
   static async copy() {
-    return await this.copyText(this.textEncrypt);
+    return await this.copyText(this.textEncrypt || this.textDecrypt);
   }
 
   private static withoutUppercaseAndAccents(strEncrypt: string): boolean {

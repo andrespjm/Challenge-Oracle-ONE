@@ -66,11 +66,12 @@ export class Crypt extends ClipboardFn {
         replaceWithChar[i]
       );
     }
+    this.textDecrypt = strEncrypt;
     return strEncrypt;
   }
   static copy() {
     return __awaiter(this, void 0, void 0, function* () {
-      return yield this.copyText(this.textEncrypt);
+      return yield this.copyText(this.textEncrypt || this.textDecrypt);
     });
   }
   static withoutUppercaseAndAccents(strEncrypt) {
