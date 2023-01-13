@@ -75,6 +75,7 @@ function main() {
     if (text.value.length > 0 && !activedBtnEncry) {
       showTextEcryptedAndDecryted(Crypt.encrypt(text.value));
       activedBtnEncry = true;
+      activedBtnDecry = false;
     }
   });
   btnDecript.addEventListener("click", (e) => {
@@ -83,6 +84,7 @@ function main() {
     if (text.value.length > 0 && !activedBtnDecry) {
       showTextEcryptedAndDecryted(Crypt.decrypt(text.value));
       activedBtnDecry = true;
+      activedBtnEncry = false;
     }
   });
   btnCopy.addEventListener("click", () =>
