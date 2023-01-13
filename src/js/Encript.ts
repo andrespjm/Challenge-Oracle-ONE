@@ -1,6 +1,7 @@
-import { ClipboardFn } from "./Clipboard";
+import { Helpers } from "./helpers/Helpers";
+import { Validations } from "./helpers/Validations";
 
-export class Crypt extends ClipboardFn {
+export class Crypt {
   private static textDecrypt: string;
   private static textEncrypt: string;
 
@@ -10,7 +11,8 @@ export class Crypt extends ClipboardFn {
     // La letra "a" es convertida para "ai"
     // La letra "o" es convertida para "ober"
     // La letra "u" es convertida para "ufat"
-    if (!this.withoutUppercaseAndAccents(strDecrypt)) return null;
+
+    if (!Validations.withoutUppercaseAndAccents(strDecrypt)) return null;
     const vowelsEncrypts = {
       a: "ai",
       e: "enter",
@@ -29,7 +31,7 @@ export class Crypt extends ClipboardFn {
   }
 
   public static decrypt(strEncrypt: string): string | null {
-    if (!this.withoutUppercaseAndAccents(strEncrypt)) return null;
+    if (!Validations.withoutUppercaseAndAccents(strEncrypt)) return null;
 
     const replaceWithChar = ["a", "e", "i", "o", "u"];
     const charToReplace = ["ai", "enter", "imes", "ober", "ufat"];
@@ -45,13 +47,6 @@ export class Crypt extends ClipboardFn {
   }
 
   static async copy() {
-    return await this.copyText(this.textEncrypt || this.textDecrypt);
-  }
-
-  private static withoutUppercaseAndAccents(strEncrypt: string): boolean {
-    const REG_EXP =
-      /^[a-z\u002C\u002E\u003B\u0589\u00BF\u003F\u00A1\u0021\ñ\s]+$/;
-    if (REG_EXP.test(strEncrypt)) return true;
-    return false;
+    return await Helpers.copyText(this.textEncrypt || this.textDecrypt);
   }
 }

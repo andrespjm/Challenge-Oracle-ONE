@@ -1,4 +1,4 @@
-export abstract class ClipboardFn {
+export class Helpers {
   static async copyText(text: string): Promise<string> {
     return navigator.clipboard.writeText(text).then(
       () => "Copiado!",

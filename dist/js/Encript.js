@@ -31,15 +31,16 @@ var __awaiter =
       step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   };
-import { ClipboardFn } from "./Clipboard.js";
-export class Crypt extends ClipboardFn {
+import { Helpers } from "./helpers/Helpers.js";
+import { Validations } from "./helpers/Validations.js";
+export class Crypt {
   static encrypt(strDecrypt) {
     // La letra "e" es convertida para "enter"
     // La letra "i" es convertida para "imes"
     // La letra "a" es convertida para "ai"
     // La letra "o" es convertida para "ober"
     // La letra "u" es convertida para "ufat"
-    if (!this.withoutUppercaseAndAccents(strDecrypt)) return null;
+    if (!Validations.withoutUppercaseAndAccents(strDecrypt)) return null;
     const vowelsEncrypts = {
       a: "ai",
       e: "enter",
@@ -57,7 +58,7 @@ export class Crypt extends ClipboardFn {
     return newWords;
   }
   static decrypt(strEncrypt) {
-    if (!this.withoutUppercaseAndAccents(strEncrypt)) return null;
+    if (!Validations.withoutUppercaseAndAccents(strEncrypt)) return null;
     const replaceWithChar = ["a", "e", "i", "o", "u"];
     const charToReplace = ["ai", "enter", "imes", "ober", "ufat"];
     for (let i = 0; i < charToReplace.length; i++) {
@@ -71,13 +72,7 @@ export class Crypt extends ClipboardFn {
   }
   static copy() {
     return __awaiter(this, void 0, void 0, function* () {
-      return yield this.copyText(this.textEncrypt || this.textDecrypt);
+      return yield Helpers.copyText(this.textEncrypt || this.textDecrypt);
     });
-  }
-  static withoutUppercaseAndAccents(strEncrypt) {
-    const REG_EXP =
-      /^[a-z\u002C\u002E\u003B\u0589\u00BF\u003F\u00A1\u0021\ñ\s]+$/;
-    if (REG_EXP.test(strEncrypt)) return true;
-    return false;
   }
 }
