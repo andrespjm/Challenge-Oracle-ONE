@@ -1,4 +1,5 @@
 import { Crypt } from "./Encript";
+import { Helpers } from "./helpers/Helpers";
 import {
   emptyFieldTemplate,
   errorTextTemplate,
@@ -18,6 +19,8 @@ const text = document.querySelector("#text-input") as HTMLTextAreaElement;
 
 const showText = <HTMLDivElement>document.querySelector("#show-text");
 
+const counter = <HTMLDivElement>document.querySelector("#counter");
+
 let activedBtn = false;
 let activedBtnEncry = false;
 let activedBtnDecry = false;
@@ -26,6 +29,7 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main() {
   showText.innerHTML = emptyFieldTemplate();
+  counter.innerText = String(Helpers.maxChar);
   btnEncript.disabled = true;
   btnDecript.disabled = true;
 
@@ -36,10 +40,13 @@ function main() {
       btnClean.style.display = "block";
       btnEncript.disabled = false;
       btnDecript.disabled = false;
+      counter.innerText = String(Helpers.characterCounter(text));
     } else {
       btnClean.style.display = "none";
       btnEncript.disabled = true;
       btnDecript.disabled = true;
+      counter.innerText = String(Helpers.maxChar);
+
       if (activedBtn) {
         showText.innerHTML = emptyFieldTemplate();
         btnCopy.style.display = "none";
@@ -76,6 +83,7 @@ function main() {
     btnClean.style.display = "none";
     activedBtnEncry = false;
     activedBtnDecry = false;
+    counter.innerText = String(Helpers.maxChar);
     if (activedBtn) {
       showText.innerHTML = emptyFieldTemplate();
       btnCopy.style.display = "none";
@@ -89,7 +97,7 @@ function showTextEcryptedAndDecryted(textEncripted: string | null) {
     : outputTextTemplate(textEncripted);
   showText.innerHTML = preloader();
   btnCopy.style.display = "none";
-  btnCopy.innerHTML = `<i class="fa-sharp fa-solid fa-clone"></i>`;
+  btnCopy.innerHTML = `Copiar <i class="fa-sharp fa-solid fa-clone"></i>`;
 
   setTimeout(() => {
     showText.innerHTML = <string>text;

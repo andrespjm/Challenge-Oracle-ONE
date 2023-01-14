@@ -15,14 +15,19 @@
 <body>
     <div id="wrapper">
         <div class="container-input">
-            <div class="logo">
-                <img src="./images/Logo.png" alt="Logo">
+            <div class="header">
+                <div class="logo">
+                    <img src="./images/Logo.png" alt="Logo">
+                </div>
+                <div class="show-counter">
+                    <p>Máximo de caracteres : <span style="font-weight: bold;" id="counter">500</span></p>
+                </div>
             </div>
             <a href="javascript:void(0)" id="btn-clean" class="btn-clean">
                 <i class="fa-solid fa-xmark fa-2x"></i>
             </a>
             <textarea cols="2" rows="10" id="text-input" class="text-input" placeholder="Ingrese el texto aquí"
-                spellcheck="false"></textarea>
+                spellcheck="false" maxlength="300"></textarea>
 
             <div class="container-bottom">
                 <p class="info"><i class="fa-solid fa-circle-exclamation"></i> Solo letras minúsculas y sin acento</p>
@@ -36,10 +41,14 @@
             </div>
         </div>
         <div id="container-text" class="container-text">
-            <a href="javascript:void(0)" id="btn-copy" class="btn-copy" title="Copiar"><i
-                    class="fa-sharp fa-solid fa-clone"></i></a>
             <div id="show-text" class="show-text"></div>
+            <a href="javascript:void(0)" id="btn-copy" class="btn-copy" title="Copiar">
+                Copiar <i class="fa-sharp fa-solid fa-clone"></i>`
+            </a>
         </div>
+        <p class="author-mobil">
+            &copy; Developed by Edwin Salazar
+        </p>
     </div>
 </body>
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>

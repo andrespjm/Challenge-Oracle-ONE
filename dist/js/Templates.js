@@ -10,7 +10,9 @@ export const emptyFieldTemplate = () => {
 export const errorTextTemplate = () => {
     return `
     <div id="show-error" class="show-error">
-      <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_jvki4wd1.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+      <div class="animation">
+        <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_jvki4wd1.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+      </div>
     <p class="error">Solo letras minúsculas y sin acento.</p>
     </div>
     `;

@@ -13,4 +13,11 @@ export class Helpers {
             return navigator.clipboard.writeText(text).then(() => "Copiado!", () => "Ups! No se copio");
         });
     }
+    static characterCounter(element) {
+        let subtraction = this.maxChar - element.value.length;
+        if (subtraction <= 0)
+            subtraction = 0;
+        return subtraction;
+    }
 }
+Helpers.maxChar = 300;
